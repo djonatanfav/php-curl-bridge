@@ -56,11 +56,9 @@ class CurlBridge
         /** Set method | Show an error if it retuns false */
         if($this->setMethod($method) === false){
             if(empty($method)){
-                // TODO: 
-                echo "teste";
+                echo "Não foi possível identificar o método";
             } else {
-                // TODO:
-                echo "aaaaaaa";
+                echo "Método não disponível";
             }
             /** Exit */
             http_response_code(401); // Unauthorized
@@ -69,8 +67,7 @@ class CurlBridge
 
         /** Load URL */
         if($this->loadFinalURL() === false){
-            // TODO:
-            echo "Não tem URL";
+            echo "URL Não identificada";
             http_response_code(400); // Bad Request
             exit(0);
         } 
