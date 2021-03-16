@@ -135,11 +135,7 @@ class CurlBridge
     public function loadFinalURL() : bool
     {
         /* Get the URL from Request */
-        if($this->method === 'POST'){
-            $this->finalURL = $_POST['curl_bridge_url'] ??  "";
-        } else {
-            $this->finalURL = $_GET['curl_bridge_url']  ??  "";
-        }
+        $this->finalURL = $_GET['curl_bridge_url']  ??  "";
 
         /* Checking if is empty */
         if(empty($this->finalURL)){
@@ -156,9 +152,6 @@ class CurlBridge
     public function loadPostFields() : void
     {
         if($this->method === 'POST'){
-            /* Remove URL from post fields */
-            unset($_POST['curl_bridge_url']);
-
             /* Build Query */
             if(count($_POST) > 0){
                 $this->postFields = http_build_query($_POST);
@@ -174,9 +167,6 @@ class CurlBridge
     public function loadGetFields() : void
     {
         if($this->method === 'GET'){
-            /* Remove URL from get fields */
-            unset($_GET['curl_bridge_url']);
-
             /* Build Query */
             if(count($_GET) > 0){
                 $this->getFields  = http_build_query($_GET);
